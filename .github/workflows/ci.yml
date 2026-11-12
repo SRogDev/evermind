@@ -1,0 +1,42 @@
+# Evermind CI
+
+Lightweight checks for the research foundation. CPU only.
+
+- Installs the package in a CPU-compatible environment.
+- Runs the minimal test suite (package import + PyTorch availability).
+- Checks formatting/linting with Ruff.
+- Does **not** download SmolLM3 weights.
+- Does **not** download datasets.
+- Does **not** run model training.
+
+```yaml
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  foundation:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
+        with:
+          python-version: "3.12"
+
+      - name: Sync dependencies (CPU)
+        run: uv sync --all-extras
+
+      - name: Lint
+        run: uv run ruff check .
+
+      - name: Format check
+        run: uv run ruff format --check .
+
+      - name: Tests (CPU smoke test)
+        run: uv run pytest -q
+```

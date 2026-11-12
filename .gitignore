@@ -1,0 +1,42 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+*.egg-info/
+dist/
+build/
+
+# uv
+.uv/
+
+# Model weights, datasets, checkpoints — never committed.
+# SmolLM3 weights must NOT be downloaded during repository creation at all.
+*.safetensors
+*.bin
+*.pt
+*.pth
+*.onnx
+models/
+checkpoints/
+data/
+datasets/
+
+# Experiments outputs (local runs only; approved experiments record
+# provenance in experiments/, not raw artifacts here).
+runs/
+outputs/
+
+# Tooling / editors
+.ruff_cache/
+.pytest_cache/
+.mypy_cache/
+.DS_Store
+.vscode/
+.idea/
+
+# Environment / secrets — never committed.
+.env
+.env.*
+!.env.example

@@ -1,0 +1,66 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "evermind"
+version = "0.1.0"
+description = "Continuous Intelligence — applied model architecture research. Can a pretrained ~3B model operate as a persistent, instruction-free intelligence over continuous event streams?"
+readme = "README.md"
+requires-python = ">=3.12,<3.13"
+# No license field: no repository license has been selected yet (see
+# README.md). The upstream model's Apache 2.0 license does not determine
+# this repository's code license. License selection is pending owner decision.
+authors = [{ name = "SRogDev" }]
+keywords = ["continuous-intelligence", "language-models", "research"]
+classifiers = [
+    "Development Status :: 2 - Pre-Alpha",
+    "Intended Audience :: Science/Research",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+
+# Core deep-learning dependency. PyTorch is the primary framework for all
+# future research code (see docs/research-charter.md). The default PyPI
+# index is used deliberately: no CUDA-specific index is hard-coded, so the
+# same project resolves on CPU-only machines and on GPU machines alike.
+# Actual model adaptation/training will require suitable GPU resources;
+# CPU is sufficient only for the foundation smoke test in this repository.
+dependencies = [
+    "torch>=2.8",
+]
+
+# Model-loading / interoperability dependencies, kept distinct from the
+# core PyTorch requirement. These exist so future research code can load
+# and inspect the SmolLM3-3B-Base checkpoint and its tokenizer when an
+# approved experimental phase begins. No weights are downloaded here.
+# transformers >= 4.53 is the first release with SmolLM3 modeling code
+# (per the official model card, HuggingFaceTB/SmolLM3-3B-Base).
+[project.optional-dependencies]
+model-loading = [
+    # Upper bound <5 keeps the project on the transformers line the
+    # SmolLM3 model card documents (SmolLM3 modeling code landed in
+    # v4.53.0). Re-evaluate before adopting a new major version.
+    "transformers>=4.53,<5",
+    "tokenizers>=0.20",
+    "safetensors>=0.4",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=8.0",
+    "ruff>=0.6",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/evermind"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "W"]

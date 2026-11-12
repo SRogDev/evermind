@@ -1,0 +1,50 @@
+# Experiment configuration template
+#
+# TEMPLATE — not an approved experiment. Copy this file into
+# experiments/<experiment-id>/experiment.yaml and fill it in BEFORE
+# any training run. See experiments/README.md for the rules.
+
+experiment:
+  id: "EXP-000"              # e.g. EXP-001; sequential, never reused
+  title: ""                  # Short descriptive title
+  status: draft              # draft | registered | running | complete | abandoned
+  created: ""                # YYYY-MM-DD
+
+research:
+  question: ""               # Research question id, e.g. RQ-2 (see docs/research/research-questions.md)
+  hypothesis: ""             # Hypothesis id, e.g. H2 (see docs/research/hypotheses.md)
+  falsifies_if: ""           # What result would weaken or falsify the hypothesis
+
+model:
+  base_model: "HuggingFaceTB/SmolLM3-3B-Base"
+  base_revision: ""          # Exact model revision / commit used
+  architecture_variant: ""   # e.g. bounded-kv-window-4096, recurrent-state-512, hybrid
+  state_mechanism: ""        # How internal state is represented and updated
+  state_budget_bytes: null   # Bytes per active stream, if applicable
+
+events:
+  representation: ""         # text | structured | combined — and the exact encoding
+  event_ordering: ""         # timestamp | sequence index | both
+
+data:
+  dataset: ""                # Name / identifier; must not be created before domain approval
+  provenance: ""             # Source, permissions, license
+  splits: ""                 # How train/validation/test are separated (by stream, entity, time)
+  signal_rate: null          # Fraction of events that are signals, if known
+
+training:
+  framework: "pytorch"       # Explicit, inspectable loop; HF Trainer is NOT the core loop
+  config: {}                 # Hyperparameters, optimizer, schedule, sequence length
+  compute: ""                # Hardware, duration, budget
+
+evaluation:
+  metrics: []                # e.g. precision, recall, F1, false-alarms-per-stream-day,
+                             #      detection-delay, state-size-over-time, cost-per-million-events
+  baselines: []              # Baseline ids compared against (see docs/research/baselines.md)
+  long_stream: ""            # e.g. 24h simulation, multi-day simulation, noise stretches
+
+reproducibility:
+  code_commit: ""            # Git commit of the code used
+  seed: null
+  environment: ""            # Python/torch/transformers versions, hardware
+  notes: ""                  # Anything else needed to reproduce the run

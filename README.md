@@ -251,10 +251,9 @@ machines and on GPU machines alike.
 - No periodic summarization; no per-event prompting shortcut.
 - No claim that continuous operation, bounded memory, or low cost has
   already been achieved.
-- No repository license selected yet — **license: pending owner
-  decision** (the upstream model's Apache 2.0 license does not
-  determine this repository's code license). No `LICENSE` file is
-  included deliberately.
+- Licensed under MIT — see [`LICENSE`](LICENSE) (decided by the owner
+  2026-11-11; the upstream model's Apache 2.0 license does not
+  determine this repository's code license).
 
 ## Evaluation philosophy
 
@@ -280,5 +279,5 @@ Do not begin experimental-phase work (architecture implementation,
 training, datasets) without a separate instruction from the owner. The
 most consequential open questions before that phase are listed in
 [`docs/research-charter.md`](docs/research-charter.md#unresolved-decisions)
-— application domain, license, architecture-selection criteria, and
+— application domain, architecture-selection criteria, and
 evaluation thresholds among them.

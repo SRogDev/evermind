@@ -8,9 +8,10 @@ version = "0.1.0"
 description = "Continuous Intelligence — applied model architecture research. Can a pretrained ~3B model operate as a persistent, instruction-free intelligence over continuous event streams?"
 readme = "README.md"
 requires-python = ">=3.12,<3.13"
-# No license field: no repository license has been selected yet (see
-# README.md). The upstream model's Apache 2.0 license does not determine
-# this repository's code license. License selection is pending owner decision.
+license = { text = "MIT" }
+# The upstream model's Apache 2.0 license does not determine this
+# repository's code license. Repository license decided by the owner:
+# MIT, 2026-11-11 (see LICENSE and README.md).
 authors = [{ name = "SRogDev" }]
 keywords = ["continuous-intelligence", "language-models", "research"]
 classifiers = [

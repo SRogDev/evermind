@@ -170,7 +170,8 @@ The invariants from Section 2 of the creation plan, preserved exactly
 These require owner approval before the experimental phase:
 
 1. **Application domain** — undecided; no dataset work until chosen.
-2. **Repository license** — pending; no `LICENSE` file until selected.
+2. **Repository license** — decided: **MIT**, 2026-11-11; `LICENSE`
+   file added.
 3. **Architecture-selection criteria** — which trade-offs decide between
    candidate families (Section 5 of the plan), and who judges them.
 4. **Evaluation thresholds** — numeric acceptance criteria per metric,
